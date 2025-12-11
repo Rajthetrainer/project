@@ -8,8 +8,6 @@ phases:
       - aws --version
       # Log in to Amazon ECR
       - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 374152831498.dkr.ecr.us-east-1.amazonaws.com
-      # Login to Dockerhub
-	echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USER" --password-stdin
       # Define repository URI and image tag
       - REPOSITORY_URI=374152831498.dkr.ecr.us-east-1.amazonaws.com/ujwal
       - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
